@@ -14,6 +14,8 @@
 </head>
 <body>
 <div id="main-page" class="row">
+  <section class="menu"></section>
+  <section class="content"></section>
 </div>
 
 <script id="menu" type="text/x-handlebars-template">
@@ -21,7 +23,7 @@
     <h3>Movies</h3>
     <ul class="collection">
       {{#each movies}}
-        <li class="collection-item avatar">
+        <li class="collection-item avatar" data-movie="{{this.stringified}}">
           <img src="{{this.poster_url}}" alt="" class="circle">
           <span class="title">{{title}}</span>
           <a href="#!" class="secondary-content"><i class="material-icons">play_arrow</i></a>
@@ -32,7 +34,7 @@
 </script>
 
 <script id="movie-show" type="text/x-handlebars-template">
-  <div class="movie-show col s8">
+  <div class="movie-show content col s8">
     <div class="card large">
       <div class="card-image">
         <img src="{{movie.poster_url}}">
@@ -50,18 +52,18 @@
 </script>
 
 <script id="movie-edit" type="text/x-handlebars-template">
-  <div class="movie-edit col s8">
+  <div class="movie-edit content col s8">
     <div class="card large">
       <div class="card-content">
         <h4>Edit Movie</h4>
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <input name="title" type="text" class="validate" value={{movie.title}}>
+              <input name="title" type="text" class="validate" value="{{movie.title}}">
               <label for="title">Title</label>
             </div>
             <div class="input-field col s12">
-              <input name="poster_url" type="text" class="validate" value={{movie.poster_url}}>
+              <input name="poster_url" type="text" class="validate" value="{{movie.poster_url}}">
               <label for="poster_url">Poster URL</label>
             </div>
             <div class="input-field col s12">
@@ -69,7 +71,7 @@
               <label for="synopsis">Synopsis</label>
             </div>
             <div class="input-field col s6">
-              <input name="year" type="text" class="validate" value={{movie.year}}>
+              <input name="year" type="text" class="validate" value="{{movie.year}}">
               <label for="year">Release Year</label>
             </div>
           </div>
