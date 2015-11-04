@@ -1,0 +1,12 @@
+/* Override some materialize styles */
+
+.card.large { height: 95vh; width: 60%; margin-left: 20%;}
+.card.large .card-image { height: 50vh; }
+.card.large .card-content {height: 30vh; }
+
+.movie-edit .card.large .card-content {height: 85vh; }
+
+.menu {
+  height: 100vh;
+  border-right: 1px solid #ccc;
+}
