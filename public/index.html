@@ -20,16 +20,13 @@
   <div class="menu col s4">
     <h3>Movies</h3>
     <ul class="collection">
-      <li class="collection-item avatar">
-        <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcQhYjUIu2o5v5u3rfJpCq5Cz0Q9WK--XdYxai_N2d0ImohPiIOp" alt="" class="circle">
-        <span class="title">Titanic</span>
-        <a href="#!" class="secondary-content"><i class="material-icons">play_arrow</i></a>
-      </li>
-      <li class="collection-item avatar">
-        <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcQhYjUIu2o5v5u3rfJpCq5Cz0Q9WK--XdYxai_N2d0ImohPiIOp" alt="" class="circle">
-        <span class="title">Other Movie</span>
-        <a href="#!" class="secondary-content"><i class="material-icons">play_arrow</i></a>
-      </li>
+      {{#each movies}}
+        <li class="collection-item avatar">
+          <img src="{{this.poster_url}}" alt="" class="circle">
+          <span class="title">{{title}}</span>
+          <a href="#!" class="secondary-content"><i class="material-icons">play_arrow</i></a>
+        </li>
+      {{/each}}
     </ul>
   </div>
 </script>
@@ -38,11 +35,11 @@
   <div class="movie-show col s8">
     <div class="card large">
       <div class="card-image">
-        <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcQhYjUIu2o5v5u3rfJpCq5Cz0Q9WK--XdYxai_N2d0ImohPiIOp">
+        <img src="{{movie.poster_url}}">
       </div>
       <div class="card-content">
-        <h4>Titanic</h4>
-        <p>James Cameron's "Titanic" is an epic, action-packed romance set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built.</p>
+        <h4>{{movie.title}}</h4>
+        <p>{{movie.synopsis}}</p>
       </div>
       <div class="card-action">
         <a href="#">Edit</a>
@@ -51,6 +48,7 @@
     </div>
   </div>
 </script>
+
 <script id="movie-edit" type="text/x-handlebars-template">
   <div class="movie-edit col s8">
     <div class="card large">
@@ -59,19 +57,19 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <input name="title" type="text" class="validate">
+              <input name="title" type="text" class="validate" value={{movie.title}}>
               <label for="title">Title</label>
             </div>
             <div class="input-field col s12">
-              <input name="poster_url" type="text" class="validate">
+              <input name="poster_url" type="text" class="validate" value={{movie.poster_url}}>
               <label for="poster_url">Poster URL</label>
             </div>
             <div class="input-field col s12">
-              <textarea name="synopsis" type="text" class="materialize-textarea"></textarea>
+              <textarea name="synopsis" type="text" class="materialize-textarea">{{movie.synopsis}}</textarea>
               <label for="synopsis">Synopsis</label>
             </div>
             <div class="input-field col s6">
-              <input name="year" type="text" class="validate">
+              <input name="year" type="text" class="validate" value={{movie.year}}>
               <label for="year">Release Year</label>
             </div>
           </div>
